@@ -1,0 +1,83 @@
+name: Validate and synchronize ecosystem documentation
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ecosystem.json
+      - scripts/ecosystem.py
+      - .github/workflows/ecosystem-docs.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - name: Validate manifest and central generated copy
+        run: |
+          python3 scripts/ecosystem.py validate
+          python3 scripts/ecosystem.py check --file docs/ECOSYSTEM.md
+          python3 scripts/ecosystem.py check-links --root .
+
+  synchronize:
+    needs: validate
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ secrets.INFINIFORGE_SYNC_TOKEN }}
+    steps:
+      - uses: actions/checkout@v7
+      - name: Open pull requests for stale component copies
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [[ -z "${GH_TOKEN:-}" ]]; then
+            echo "Set INFINIFORGE_SYNC_TOKEN with Contents: write and Pull requests: write access to all component repositories."
+            exit 1
+          fi
+          gh auth setup-git
+          clone_root="$(mktemp -d)"
+          branch="chore/sync-ecosystem-docs"
+          while IFS= read -r component; do
+            repository="infiniforge/${component}"
+            checkout="${clone_root}/${component}"
+            echo "Checking ${repository}"
+            git clone --depth 1 "https://github.com/${repository}.git" "${checkout}"
+            base="$(gh repo view "${repository}" --json defaultBranchRef --jq '.defaultBranchRef.name')"
+            git -C "${checkout}" fetch origin "${base}"
+            git -C "${checkout}" checkout -B "${branch}" "FETCH_HEAD"
+
+            python3 scripts/ecosystem.py validate-repo \
+              --component "${component}" --root "${checkout}" --links
+            if python3 scripts/ecosystem.py check --file "${checkout}/docs/ECOSYSTEM.md"; then
+              echo "${repository}: generated copy is current"
+            else
+              echo "${repository}: generated copy is stale; preparing a pull request"
+            fi
+            python3 scripts/ecosystem.py render --output "${checkout}/docs/ECOSYSTEM.md"
+            python3 scripts/ecosystem.py validate-repo \
+              --component "${component}" --root "${checkout}" --links --generated
+
+            git -C "${checkout}" config user.name "github-actions[bot]"
+            git -C "${checkout}" config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git -C "${checkout}" add docs/ECOSYSTEM.md
+            if git -C "${checkout}" diff --cached --quiet; then
+              echo "${repository}: no update needed"
+              continue
+            fi
+            git -C "${checkout}" commit -m "docs: sync ecosystem reference"
+            git -C "${checkout}" push --force origin "HEAD:refs/heads/${branch}"
+            existing="$(gh pr list --repo "${repository}" --head "${branch}" --state open --json number --jq 'length')"
+            if [[ "${existing}" == "0" ]]; then
+              gh pr create --repo "${repository}" --base "${base}" \
+                --head "${branch}" \
+                --title "docs: sync InfiniForge ecosystem reference" \
+                --body "Updates the generated docs/ECOSYSTEM.md from the authoritative InfiniForge organization manifest. Review this documentation-only change; do not edit the generated copy by hand."
+            else
+              echo "${repository}: updated the existing ecosystem synchronization pull request"
+            fi
+          done < <(python3 scripts/ecosystem.py list)
