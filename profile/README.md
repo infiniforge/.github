@@ -1,5 +1,7 @@
 # InfiniForge
 
+<p align="center"><img src="assets/infiniforge-logo.png" alt="InfiniForge rainbow infinity logo" width="640" /></p>
+
 **Independent Android apps, connected by reusable libraries and open platform interfaces.**
 
 InfiniForge is an ecosystem of focused applications and shared libraries. Each app is its own project: it owns its build, data, lifecycle, and user experience, and can be built and installed independently. Apps can work together through Android intents, Storage Access Framework (SAF), content URIs, and other documented public interfaces.
