@@ -165,7 +165,7 @@
       "kind": "application",
       "status": "planned",
       "repository": "https://github.com/infiniforge/infiniwave",
-      "purpose": "Planned Android audio file editor, with Audacity as a product reference.",
+      "purpose": "Planned Android audio synthesis, instrument-creation, and sound-design environment. Placeholder only; no application source or standalone build is present. Future synthesis workflows and app-owned instrument/project state belong here; InfiniTrack owns composition and arrangement.",
       "responsibilities": "Placeholder only; no application source or standalone build is present. Future editing workflows and project state belong here.",
       "released_version": null,
       "declared_version": null,
