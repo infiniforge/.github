@@ -511,21 +511,26 @@
       "status": "active",
       "repository": "https://github.com/infiniforge/infinimesh",
       "purpose": "Standalone read-only Android 3D model and G-code viewer.",
-      "responsibilities": "Owns model opening through SAF/granted intents, viewer controls, G-code playback clock, lifecycle and app preferences. Shared parsers and rendering belong to libinfinemesh; no editing, slicing or printer control.",
+      "responsibilities": "Owns read-only model presentation, viewer controls, G-code playback clock, lifecycle and app preferences. Uses libinfiniselect for file selection, grant-aware reads and durable source resolution; shared mesh parsing and rendering belong to libinfinemesh. No editing, slicing or printer control.",
       "released_version": null,
-      "declared_version": "0.1.0",
+      "declared_version": "0.1.1",
       "declared_version_source": "build.gradle.kts",
       "dependency_source": "dependencies.lock.json",
       "dependencies": [
-        "libinfinemesh"
+        "libinfinemesh",
+        "libinfiniselect"
       ],
-      "integrations": [],
+      "integrations": [
+        "infinifolder"
+      ],
       "api_docs": [
         "docs/APPLICATION.md",
         "docs/architecture.md"
       ],
       "protocols": [
         "android-saf",
+        "infini-select-intents",
+        "folder-resource-resolution",
         "android-uri-handoff"
       ],
       "build_status": "standalone"
@@ -538,7 +543,7 @@
       "purpose": "Reusable read-only model geometry, STL decoding, G-code simulation and Android 3D rendering.",
       "responsibilities": "Owns portable geometry and normals, decoder registry, STL and explicit G-code dialect parsing, timed toolpaths and reusable GLES viewer surface. Applications own URI access, lifecycle, playback clocks and settings. Texture support and other formats are planned.",
       "released_version": null,
-      "declared_version": "0.1.0",
+      "declared_version": "0.1.1",
       "declared_version_source": "build.gradle.kts",
       "dependency_source": null,
       "dependencies": [],
