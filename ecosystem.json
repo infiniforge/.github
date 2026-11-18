@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "organization": "infiniforge",
-  "audited_on": "2026-11-17",
+  "audited_on": "2026-11-18",
   "manifest_repository": "https://github.com/infiniforge/.github",
   "components": [
     {
@@ -504,6 +504,50 @@
       ],
       "protocols": [],
       "build_status": "asset-tools"
+    },
+    {
+      "id": "infinimesh",
+      "kind": "application",
+      "status": "active",
+      "repository": "https://github.com/infiniforge/infinimesh",
+      "purpose": "Standalone read-only Android 3D model and G-code viewer.",
+      "responsibilities": "Owns model opening through SAF/granted intents, viewer controls, G-code playback clock, lifecycle and app preferences. Shared parsers and rendering belong to libinfinemesh; no editing, slicing or printer control.",
+      "released_version": null,
+      "declared_version": "0.1.0",
+      "declared_version_source": "build.gradle.kts",
+      "dependency_source": "dependencies.lock.json",
+      "dependencies": [
+        "libinfinemesh"
+      ],
+      "integrations": [],
+      "api_docs": [
+        "docs/APPLICATION.md",
+        "docs/architecture.md"
+      ],
+      "protocols": [
+        "android-saf",
+        "android-uri-handoff"
+      ],
+      "build_status": "standalone"
+    },
+    {
+      "id": "libinfinemesh",
+      "kind": "library",
+      "status": "active",
+      "repository": "https://github.com/infiniforge/libinfinemesh",
+      "purpose": "Reusable read-only model geometry, STL decoding, G-code simulation and Android 3D rendering.",
+      "responsibilities": "Owns portable geometry and normals, decoder registry, STL and explicit G-code dialect parsing, timed toolpaths and reusable GLES viewer surface. Applications own URI access, lifecycle, playback clocks and settings. Texture support and other formats are planned.",
+      "released_version": null,
+      "declared_version": "0.1.0",
+      "declared_version_source": "build.gradle.kts",
+      "dependency_source": null,
+      "dependencies": [],
+      "integrations": [],
+      "api_docs": [
+        "docs/API.md"
+      ],
+      "protocols": [],
+      "build_status": "standalone-library"
     }
   ],
   "protocols": [
@@ -515,7 +559,8 @@
       "implemented_by": [
         "infinifolder",
         "infinikey-ime",
-        "libinfiniselect"
+        "libinfiniselect",
+        "infinimesh"
       ],
       "resource_identity": "A provider's document or tree content URI is opaque. Preserve the URI and Android grants; do not decode document IDs or assume they are filesystem paths.",
       "request": "Clients use Android DocumentsContract/ContentResolver and ACTION_OPEN_DOCUMENT, ACTION_OPEN_DOCUMENT_TREE, or ACTION_CREATE_DOCUMENT. Requested read/write access is expressed through Android URI permission flags.",
@@ -569,7 +614,8 @@
         "infinimedia",
         "infiniscribe",
         "libinfiniui",
-        "libinfiniselect"
+        "libinfiniselect",
+        "infinimesh"
       ],
       "resource_identity": "The content URI in data, EXTRA_STREAM, or ClipData identifies the current Android access path and is usable only with the attached URI grant. Where a separate authoritative URI is available, keep that for later reopening.",
       "request": "Applications use Android ACTION_VIEW/send-style intents, MIME types, data/EXTRA_STREAM, ClipData, and read/write/persistable grant flags as appropriate to the operation.",

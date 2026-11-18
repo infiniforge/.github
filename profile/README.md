@@ -16,6 +16,7 @@ InfiniFolder is the ecosystem’s central file manager and advanced storage laye
 - [InfiniMedia](https://github.com/infiniforge/infinimedia) — player for supported audio, video, and image formats.
 - [InfiniScribe](https://github.com/infiniforge/infiniscribe) — document viewer; development and format coverage are still in progress.
 - [Infinikey](https://github.com/infiniforge/infinikey-ime) — programmable Android keyboard input method.
+- [InfiniMesh](https://github.com/infiniforge/infinimesh) — read-only 3D model viewer with STL shading and G-code simulation.
 
 ### Planned projects
 
@@ -33,7 +34,7 @@ Applications use the libraries they need through explicit, pinned dependencies. 
 
 - Foundations and interfaces: [libinfinicore](https://github.com/infiniforge/libinfinicore), [libinfiniui](https://github.com/infiniforge/libinfiniui), [libinfinistream](https://github.com/infiniforge/libinfinistream)
 - Files and storage: [libinfiniselect](https://github.com/infiniforge/libinfiniselect), [libinfinistore](https://github.com/infiniforge/libinfinistore), [libinfinivault](https://github.com/infiniforge/libinfinivault), [libinfinimeta](https://github.com/infiniforge/libinfinimeta)
-- Media and creative formats: [libinfinisound](https://github.com/infiniforge/libinfinisound), [libinfinivideo](https://github.com/infiniforge/libinfinivideo), [libinfiniscribe](https://github.com/infiniforge/libinfiniscribe), [libinfinicanvas](https://github.com/infiniforge/libinfinicanvas), [Infini Icon Theme](https://github.com/infiniforge/infini-icon-theme)
+- Media and creative formats: [libinfinisound](https://github.com/infiniforge/libinfinisound), [libinfinivideo](https://github.com/infiniforge/libinfinivideo), [libinfiniscribe](https://github.com/infiniforge/libinfiniscribe), [libinfinicanvas](https://github.com/infiniforge/libinfinicanvas), [libinfinemesh](https://github.com/infiniforge/libinfinemesh), [Infini Icon Theme](https://github.com/infiniforge/infini-icon-theme)
 
 ## Build and contribute
 
