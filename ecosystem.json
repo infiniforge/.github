@@ -12,7 +12,7 @@
       "purpose": "Android file manager and advanced storage companion.",
       "responsibilities": "Owns the file manager UI and operations and composes libinfinicore, libinfinistore, and libinfinivault through its providers for local/SAF, remote, archive, and filesystem-image resources. It implements Android document/provider integration and remains optional to companion apps; shared backend code stays in the libraries.",
       "released_version": null,
-      "declared_version": "0.1.3",
+      "declared_version": "0.1.4",
       "declared_version_source": "app/build.gradle.kts",
       "dependency_source": "dependencies.lock.json",
       "dependencies": [
@@ -516,7 +516,7 @@
       "purpose": "Standalone read-only Android 3D model and G-code viewer.",
       "responsibilities": "Owns read-only model presentation, viewer controls, G-code playback clock, lifecycle and app preferences. Uses libinfiniselect for file selection, grant-aware reads and durable source resolution; shared mesh parsing and rendering belong to libinfinemesh. No editing, slicing or printer control.",
       "released_version": null,
-      "declared_version": "0.1.2",
+      "declared_version": "0.1.3",
       "declared_version_source": "build.gradle.kts",
       "dependency_source": "dependencies.lock.json",
       "dependencies": [
@@ -547,7 +547,7 @@
       "purpose": "Reusable read-only model geometry, STL decoding, G-code simulation and Android 3D rendering.",
       "responsibilities": "Owns portable geometry and normals, decoder registry, STL and tolerant G-code parsing, timed toolpaths, reusable GLES viewer surface and bounded transparent mesh/toolpath thumbnails through libinfinistream capabilities. Applications own URI access, lifecycle, playback clocks and settings. Texture support and other formats are planned.",
       "released_version": null,
-      "declared_version": "0.2.0",
+      "declared_version": "0.2.1",
       "declared_version_source": "build.gradle.kts",
       "dependency_source": "dependencies.lock.json",
       "dependencies": [
