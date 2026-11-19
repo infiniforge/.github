@@ -169,9 +169,9 @@
       "status": "active",
       "repository": "https://github.com/infiniforge/infiniwave",
       "purpose": "Standalone Android multitrack audio editor and parameter-based sound-design workspace inspired by Audacity.",
-      "responsibilities": "Owns waveform editing, timeline/track/channel UI, playback, immutable projects and undo history, recovery, versioned JSON rendering profiles and SAF exports. libinfinisynth owns FM, SF2 sample extraction/rendering, OPL3, SID 6581 and dual-SAA1099 CMS synthesis; libinfinisound owns portable decoding. Infinifolder remains optional. Recording, plugin effects, automation and complete Audacity parity remain planned.",
+      "responsibilities": "Owns multitrack waveform editing, compact toolbars and navigable tool dialogs, selection deletion, anchored pinch zoom, chosen-channel split/recombine, playback, immutable projects and history, recovery, versioned JSON synthesis profiles and SAF exports. Uses libinfinisound for portable decoding and PCM effects (polarity, peak/DC normalization, filters and gating), and libinfinisynth for synthesis. Infinifolder remains optional. Recording, plugin effects, spectral denoising, automation and complete Audacity parity remain planned.",
       "released_version": null,
-      "declared_version": "0.2.0",
+      "declared_version": "0.3.0",
       "declared_version_source": "build.gradle.kts",
       "dependency_source": "dependencies.lock.json",
       "dependencies": [
@@ -187,7 +187,9 @@
         "docs/APPLICATION.md",
         "docs/architecture.md",
         "docs/storage.md",
-        "docs/profiles.md"
+        "docs/profiles.md",
+        "docs/editing.md",
+        "docs/validation.md"
       ],
       "protocols": [
         "android-saf",
@@ -368,9 +370,9 @@
       "status": "active",
       "repository": "https://github.com/infiniforge/libinfinisound",
       "purpose": "Reusable audio parsing, decoding, synthesis, metadata, playlists, and signal processing.",
-      "responsibilities": "Owns shared audio processing and PCM APIs, portable decoders and synthesis, Android media adapters, and audio capability discovery. Consuming applications own playback UI, queues, and app state.",
+      "responsibilities": "Owns shared audio processing and PCM APIs, portable decoders and synthesis, Android media adapters, and audio capability discovery. Consuming applications own playback UI, queues, and app state. Portable PcmEffects exposes immutable selection polarity/normalization, low/high-pass and notch filtering, and linked noise gating; hosts own editing/history/selection UI.",
       "released_version": null,
-      "declared_version": "0.2.0",
+      "declared_version": "0.2.1",
       "declared_version_source": "build.gradle.kts",
       "dependency_source": "dependencies.lock.json",
       "dependencies": [
@@ -381,7 +383,8 @@
         "README.md",
         "CAPABILITIES.md",
         "docs/architecture.md",
-        "docs/third-party.md"
+        "docs/third-party.md",
+        "docs/pcm-effects.md"
       ],
       "protocols": [],
       "build_status": "standalone-library"
