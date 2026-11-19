@@ -166,19 +166,36 @@
     {
       "id": "infiniwave",
       "kind": "application",
-      "status": "planned",
+      "status": "active",
       "repository": "https://github.com/infiniforge/infiniwave",
-      "purpose": "Planned Android audio synthesis, instrument-creation, and sound-design environment. Placeholder only; no application source or standalone build is present. Future synthesis workflows and app-owned instrument/project state belong here; InfiniTrack owns composition and arrangement.",
-      "responsibilities": "Placeholder only; no application source or standalone build is present. Future editing workflows and project state belong here.",
+      "purpose": "Standalone Android multitrack audio editor and parameter-based sound-design workspace inspired by Audacity.",
+      "responsibilities": "Owns waveform editing, timeline/track/channel UI, playback, immutable projects and undo history, recovery, versioned JSON rendering profiles and SAF exports. libinfinisynth owns FM, SF2 sample extraction/rendering, OPL3, SID 6581 and dual-SAA1099 CMS synthesis; libinfinisound owns portable decoding. Infinifolder remains optional. Recording, plugin effects, automation and complete Audacity parity remain planned.",
       "released_version": null,
-      "declared_version": null,
-      "declared_version_source": null,
-      "dependency_source": null,
-      "dependencies": [],
-      "integrations": [],
-      "api_docs": [],
-      "protocols": [],
-      "build_status": "planned"
+      "declared_version": "0.2.0",
+      "declared_version_source": "build.gradle.kts",
+      "dependency_source": "dependencies.lock.json",
+      "dependencies": [
+        "libinfiniselect",
+        "libinfinisound",
+        "libinfinistream",
+        "libinfinisynth"
+      ],
+      "integrations": [
+        "infinifolder"
+      ],
+      "api_docs": [
+        "docs/APPLICATION.md",
+        "docs/architecture.md",
+        "docs/storage.md",
+        "docs/profiles.md"
+      ],
+      "protocols": [
+        "android-saf",
+        "infini-select-intents",
+        "folder-resource-resolution",
+        "android-uri-handoff"
+      ],
+      "build_status": "standalone"
     },
     {
       "id": "infinitrack",
@@ -559,6 +576,26 @@
       ],
       "protocols": [],
       "build_status": "standalone-library"
+    },
+    {
+      "id": "libinfinisynth",
+      "kind": "library",
+      "status": "active",
+      "repository": "https://github.com/infiniforge/libinfinisynth",
+      "purpose": "Reusable offline sound generation, FM synthesis, SF2 sample extraction and native sound-chip rendering.",
+      "responsibilities": "Owns immutable float PCM, DAHDSR envelopes, 1–8-operator FM matrices, sample pitch/loop rendering, bounded mono/stereo 16/24-bit SF2 sample pools, Nuked-OPL3, chips m6581 SID 6581 and dual SAA1099 CMS cores with patch/register APIs. Hosts own storage, audio devices, mixing/editing, project/profile persistence and sequencing. No instrument bank is bundled.",
+      "released_version": null,
+      "declared_version": "0.1.0",
+      "declared_version_source": "build.gradle.kts",
+      "dependency_source": null,
+      "dependencies": [],
+      "integrations": [],
+      "api_docs": [
+        "docs/API.md",
+        "docs/THIRD_PARTY.md"
+      ],
+      "protocols": [],
+      "build_status": "standalone-library"
     }
   ],
   "protocols": [
@@ -571,7 +608,8 @@
         "infinifolder",
         "infinikey-ime",
         "libinfiniselect",
-        "infinimesh"
+        "infinimesh",
+        "infiniwave"
       ],
       "resource_identity": "A provider's document or tree content URI is opaque. Preserve the URI and Android grants; do not decode document IDs or assume they are filesystem paths.",
       "request": "Clients use Android DocumentsContract/ContentResolver and ACTION_OPEN_DOCUMENT, ACTION_OPEN_DOCUMENT_TREE, or ACTION_CREATE_DOCUMENT. Requested read/write access is expressed through Android URI permission flags.",
@@ -588,7 +626,8 @@
       "version_status": "unversioned; no compatibility handshake is implemented",
       "implemented_by": [
         "libinfiniselect",
-        "infinifolder"
+        "infinifolder",
+        "infiniwave"
       ],
       "resource_identity": "A result can carry a current grantable content URI and a separate authoritative URI. Persist the authoritative URI when it is supplied; a Folder relay is a temporary access handle.",
       "request": "FileSelectionContract defines ACTION_SELECT and ACTION_SAVE plus request extras for client identity, MIME/extensions, multiplicity, initial directory, and save options. Requests are sent to the optional Infinifolder selector when present.",
@@ -605,7 +644,8 @@
       "version_status": "unversioned; no compatibility handshake is implemented",
       "implemented_by": [
         "infinifolder",
-        "libinfiniselect"
+        "libinfiniselect",
+        "infiniwave"
       ],
       "resource_identity": "Requests use authoritative source URIs, which may identify local, SAF, remote, archive-member, or filesystem-image resources. Document IDs are opaque. Returned content URIs are access handles and may be short-lived.",
       "request": "libinfiniselect calls ContentResolver.call on com.infinifolder.selection. Methods include RESOLVE_SOURCE, RESOLVE_RELATIVE_ARCHIVE, DESCRIBE_ARCHIVE, and CANONICALIZE_SOURCE. Requests use the STORAGE_* Bundle keys in FileSelectionContract; relative archive resolution takes an authoritative base URI and relative path.",
@@ -626,7 +666,8 @@
         "infiniscribe",
         "libinfiniui",
         "libinfiniselect",
-        "infinimesh"
+        "infinimesh",
+        "infiniwave"
       ],
       "resource_identity": "The content URI in data, EXTRA_STREAM, or ClipData identifies the current Android access path and is usable only with the attached URI grant. Where a separate authoritative URI is available, keep that for later reopening.",
       "request": "Applications use Android ACTION_VIEW/send-style intents, MIME types, data/EXTRA_STREAM, ClipData, and read/write/persistable grant flags as appropriate to the operation.",
