@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "organization": "infiniforge",
-  "audited_on": "2026-11-18",
+  "audited_on": "2026-11-19",
   "manifest_repository": "https://github.com/infiniforge/.github",
   "components": [
     {
@@ -237,19 +237,35 @@
     {
       "id": "infiniplay",
       "kind": "application",
-      "status": "planned",
+      "status": "active",
       "repository": "https://github.com/infiniforge/infiniplay",
-      "purpose": "Planned universal-emulator frontend using the Libretro app as its backend.",
-      "responsibilities": "Placeholder only; no application source or standalone build is present. The intended integration is through the backend's supported public Android interfaces, not imported source or private files.",
+      "purpose": "Standalone Android emulator frontend running Libretro cores inside the application.",
+      "responsibilities": "Owns the game library, controller layouts and USB input, session lifecycle, source imports, firmware launch gates and per-game saves. Compiled core bundle covers selected systems through the SNES era including Sega add-ons and Neo Geo; later systems are import-only profiles. Emulation remains in independently pinned third-party cores.",
       "released_version": null,
-      "declared_version": null,
-      "declared_version_source": null,
-      "dependency_source": null,
-      "dependencies": [],
-      "integrations": [],
-      "api_docs": [],
-      "protocols": [],
-      "build_status": "planned"
+      "declared_version": "0.1.0",
+      "declared_version_source": "build.gradle.kts",
+      "dependency_source": "dependencies.lock.json",
+      "dependencies": [
+        "libinfiniselect",
+        "libinfinistream"
+      ],
+      "integrations": [
+        "infinifolder"
+      ],
+      "api_docs": [
+        "docs/APPLICATION.md",
+        "docs/systems.md",
+        "docs/architecture.md",
+        "docs/storage.md",
+        "docs/validation.md",
+        "docs/third-party.md"
+      ],
+      "protocols": [
+        "android-saf",
+        "infini-select-intents",
+        "folder-resource-resolution"
+      ],
+      "build_status": "standalone"
     },
     {
       "id": "libinfinicanvas",

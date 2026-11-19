@@ -300,7 +300,11 @@ def check_markdown_links(repo_root: Path) -> list[str]:
     except OSError:
         pass
     for md in root.rglob("*.md"):
-        if excluded.intersection(md.relative_to(root).parts):
+        relative = md.relative_to(root)
+        if excluded.intersection(relative.parts):
+            continue
+        # A component owns its documentation, not initialized upstream source trees.
+        if any(link == relative or link in relative.parents for link in gitlinks):
             continue
         try:
             text = md.read_text(encoding="utf-8", errors="replace")
