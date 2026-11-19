@@ -12,7 +12,7 @@ The inventory contains 10 applications (6 with standalone builds and 4 planned p
 
 #### [infinifolder](https://github.com/infiniforge/infinifolder)
 
-**State:** active · **Build:** standalone app build · **Versions:** no published release verified; build declares `0.1.4`
+**State:** active · **Build:** standalone app build · **Versions:** no published release verified; build declares `0.1.5`
 
 **Purpose:** Android file manager and advanced storage companion. Owns the file manager UI and operations and composes libinfinicore, libinfinistore, and libinfinivault through its providers for local/SAF, remote, archive, and filesystem-image resources. It implements Android document/provider integration and remains optional to companion apps; shared backend code stays in the libraries.
 
@@ -22,7 +22,7 @@ The inventory contains 10 applications (6 with standalone builds and 4 planned p
 
 **Optional/runtime integrations:** [infinimesh](https://github.com/infiniforge/infinimesh)
 
-**Public API and architecture documentation:** [architecture.md](https://github.com/infiniforge/infinifolder/blob/main/docs/architecture.md), [libinfiniselect.md](https://github.com/infiniforge/infinifolder/blob/main/docs/libinfiniselect.md), [runtime-capabilities.md](https://github.com/infiniforge/infinifolder/blob/main/docs/runtime-capabilities.md)
+**Public API and architecture documentation:** [architecture.md](https://github.com/infiniforge/infinifolder/blob/main/docs/architecture.md), [libinfiniselect.md](https://github.com/infiniforge/infinifolder/blob/main/docs/libinfiniselect.md), [runtime-capabilities.md](https://github.com/infiniforge/infinifolder/blob/main/docs/runtime-capabilities.md), [directory-properties.md](https://github.com/infiniforge/infinifolder/blob/main/docs/directory-properties.md)
 
 #### [infinimedia](https://github.com/infiniforge/infinimedia)
 

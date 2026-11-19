@@ -12,7 +12,7 @@
       "purpose": "Android file manager and advanced storage companion.",
       "responsibilities": "Owns the file manager UI and operations and composes libinfinicore, libinfinistore, and libinfinivault through its providers for local/SAF, remote, archive, and filesystem-image resources. It implements Android document/provider integration and remains optional to companion apps; shared backend code stays in the libraries.",
       "released_version": null,
-      "declared_version": "0.1.4",
+      "declared_version": "0.1.5",
       "declared_version_source": "app/build.gradle.kts",
       "dependency_source": "dependencies.lock.json",
       "dependencies": [
@@ -35,7 +35,8 @@
       "api_docs": [
         "docs/architecture.md",
         "docs/libinfiniselect.md",
-        "docs/runtime-capabilities.md"
+        "docs/runtime-capabilities.md",
+        "docs/directory-properties.md"
       ],
       "protocols": [
         "android-saf",
