@@ -169,9 +169,9 @@
       "status": "active",
       "repository": "https://github.com/infiniforge/infiniwave",
       "purpose": "Standalone Android multitrack audio editor and parameter-based sound-design workspace inspired by Audacity.",
-      "responsibilities": "Owns multitrack waveform editing, compact toolbars and navigable tool dialogs, selection deletion, anchored workspace pinch zoom across tracks, explicit single-track edit controls, chosen-channel split/recombine and mono mixing, playback, immutable projects and history, recovery, versioned JSON synthesis profiles and SAF exports. Uses libinfinisound for portable decoding and PCM effects (polarity, peak/DC normalization, filters and gating), and libinfinisynth for synthesis. Infinifolder remains optional. Recording, plugin effects, spectral denoising, automation and complete Audacity parity remain planned.",
+      "responsibilities": "Owns multitrack waveform editing, compact toolbars and navigable tool dialogs, selection deletion, anchored workspace pinch zoom across tracks, explicit single-track edit controls, chosen-channel split/recombine and mono mixing, continuous playback with live mute/solo, immutable projects and history, recovery, versioned JSON synthesis profiles and SAF exports. Uses libinfinisound for portable decoding and PCM effects (polarity, peak/DC normalization, filters and gating), and libinfinisynth for synthesis. Infinifolder remains optional. Recording, plugin effects, spectral denoising, automation and complete Audacity parity remain planned.",
       "released_version": null,
-      "declared_version": "0.4.0",
+      "declared_version": "0.4.1",
       "declared_version_source": "build.gradle.kts",
       "dependency_source": "dependencies.lock.json",
       "dependencies": [
