@@ -241,9 +241,9 @@
       "status": "active",
       "repository": "https://github.com/infiniforge/infiniplay",
       "purpose": "Standalone Android emulator frontend running Libretro cores inside the application.",
-      "responsibilities": "Owns the game library, controller layouts and USB input, session lifecycle, source imports, firmware launch gates and per-game saves. Compiled core bundle covers selected systems through the SNES era including Sega add-ons and Neo Geo, plus GBA, Neo Geo Pocket/Color and WonderSwan/Color; N64/PlayStation/PSP/DS/3DS remain import-only profiles. Emulation remains in independently pinned third-party cores. Main UI embeds InfiniSelect with Recents/Favorites/Open, hamburger setup, automatic system dispatch and immediate View/Share launch. Shared .iflink collections live under internal storage/infini/play; native working copies and saves stay private. Declares no broad storage permissions: listings and shared collection writes go through the InfiniSelect/Folder relay; absent Folder, local app-private link collections and normal Android file selection remain available.",
+      "responsibilities": "Owns the game library, controller layouts and USB input, session lifecycle, source imports, firmware launch gates and per-game saves. Compiled core bundle covers selected systems through the SNES era including Sega add-ons and Neo Geo, plus GBA, Neo Geo Pocket/Color, WonderSwan/Color and bundled N64/PlayStation/PSP/DS/3DS profiles. PSP core data ships with the app; 3DS requires decrypted content and GLES 3.2. gpSP and melonDS remain import-only alternatives. Emulation remains in independently pinned third-party cores. Main UI embeds InfiniSelect with Recents/Favorites/Open, hamburger setup, automatic system dispatch and immediate View/Share launch. Shared .iflink collections live under internal storage/infini/play; native working copies and saves stay private. Declares no broad storage permissions: listings and shared collection writes go through the InfiniSelect/Folder relay; absent Folder, local app-private link collections and normal Android file selection remain available.",
       "released_version": null,
-      "declared_version": "0.3.1",
+      "declared_version": "0.4.0",
       "declared_version_source": "build.gradle.kts",
       "dependency_source": "dependencies.lock.json",
       "dependencies": [
