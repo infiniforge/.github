@@ -12,7 +12,7 @@
       "purpose": "Android file manager and advanced storage companion.",
       "responsibilities": "Owns the complete file manager UI, browser views, breadcrumbs, directory navigation, gestures, menus and artwork. The existing FolderBrowserController is hosted by floating windows and cross-app embedded sessions; InfiniSelect is the public gateway. Composes libinfinicore, libinfinistore and libinfinivault for local/SAF, remote, archive and filesystem-image storage. Provides grant-aware Android document/selection integration, non-UI JSON listings and caller-scoped shortcut collections. Storage permissions and credentials remain in Folder. Companion apps retain ordinary selection fallback when embedding is unavailable.",
       "released_version": null,
-      "declared_version": "0.1.12",
+      "declared_version": "0.1.13",
       "declared_version_source": "app/build.gradle.kts",
       "dependency_source": "dependencies.lock.json",
       "dependencies": [
@@ -300,7 +300,7 @@
       "purpose": "Provider-neutral resource contracts and Android local/SAF support.",
       "responsibilities": "Owns resource identities, capability/error types, stream and block adapters, guarded content replacement and recovery, disk cache, diagnostics, MIME identification, transfer coordination, and Android local/SAF adapters. It does not own remote clients, mounted filesystems, or app UI.",
       "released_version": null,
-      "declared_version": "0.1.0",
+      "declared_version": "0.1.1",
       "declared_version_source": "build.gradle.kts",
       "dependency_source": "dependencies.lock.json",
       "dependencies": [
