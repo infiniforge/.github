@@ -243,7 +243,7 @@
       "purpose": "Standalone Android emulator frontend running Libretro cores inside the application.",
       "responsibilities": "Owns the game library, controller layouts and USB input, session lifecycle, source imports, firmware launch gates and per-game saves. Compiled core bundle covers selected systems through the SNES era including Sega add-ons and Neo Geo; later systems are import-only profiles. Emulation remains in independently pinned third-party cores. Main UI embeds InfiniSelect with Recents/Favorites/Open, hamburger setup, automatic system dispatch and immediate View/Share launch. Shared .iflink collections live under internal storage/infini/play; native working copies and saves stay private. Declares no broad storage permissions: listings and shared collection writes go through the InfiniSelect/Folder relay; absent Folder, local app-private link collections and normal Android file selection remain available.",
       "released_version": null,
-      "declared_version": "0.2.3",
+      "declared_version": "0.2.4",
       "declared_version_source": "build.gradle.kts",
       "dependency_source": "dependencies.lock.json",
       "dependencies": [
@@ -366,7 +366,7 @@
       "purpose": "Reusable Android file open/save selection and resource-resolution client APIs.",
       "responsibilities": "Owns optional InfiniFolder picker integration, Android SAF fallback, grant-aware results and authoritative/access URI resolution. EmbeddedFileBrowser is only a SurfaceControlViewHost gateway to the complete Folder-owned browser, with caller actions and configuration; it implements no file views, breadcrumbs or directory navigation. Provides interoperable .iflink serialization, scoped shortcut collection requests and non-UI paged JSON directory listing requests. Folder owns storage permissions and the entire browser. Optional preferredViewMode initializes LIST/ICON in floating and embedded hosts. Playlist generation migration to InfiniMedia is deferred.",
       "released_version": null,
-      "declared_version": "0.2.0",
+      "declared_version": "0.2.1",
       "declared_version_source": "build.gradle.kts",
       "dependency_source": "dependencies.lock.json",
       "dependencies": [],
