@@ -10,9 +10,9 @@
       "status": "active",
       "repository": "https://github.com/infiniforge/infinifolder",
       "purpose": "Android file manager and advanced storage companion.",
-      "responsibilities": "Owns the file manager UI and operations and composes libinfinicore, libinfinistore, and libinfinivault through its providers for local/SAF, remote, archive, and filesystem-image resources. It implements Android document/provider integration and remains optional to companion apps; shared backend code stays in the libraries.",
+      "responsibilities": "Owns the file manager UI and operations and composes libinfinicore, libinfinistore, and libinfinivault through its providers for local/SAF, remote, archive, and filesystem-image resources. It implements Android document/provider integration and remains optional to companion apps; shared backend code stays in the libraries. Supplies paged JSON directory listings and caller-scoped shortcut collection operations through the public selection relay, keeping storage permissions in Folder.",
       "released_version": null,
-      "declared_version": "0.1.5",
+      "declared_version": "0.1.6",
       "declared_version_source": "app/build.gradle.kts",
       "dependency_source": "dependencies.lock.json",
       "dependencies": [
@@ -74,7 +74,8 @@
         "docs/architecture.md",
         "docs/storage.md",
         "docs/audio-formats.md",
-        "docs/video-formats.md"
+        "docs/video-formats.md",
+        "docs/TODO.md"
       ],
       "protocols": [
         "android-saf",
@@ -240,9 +241,9 @@
       "status": "active",
       "repository": "https://github.com/infiniforge/infiniplay",
       "purpose": "Standalone Android emulator frontend running Libretro cores inside the application.",
-      "responsibilities": "Owns the game library, controller layouts and USB input, session lifecycle, source imports, firmware launch gates and per-game saves. Compiled core bundle covers selected systems through the SNES era including Sega add-ons and Neo Geo; later systems are import-only profiles. Emulation remains in independently pinned third-party cores. Main UI embeds InfiniSelect with Recents/Favorites/Open, hamburger setup, automatic system dispatch and immediate View/Share launch. Shared .iflink collections live under internal storage/infini/play; native working copies and saves stay private.",
+      "responsibilities": "Owns the game library, controller layouts and USB input, session lifecycle, source imports, firmware launch gates and per-game saves. Compiled core bundle covers selected systems through the SNES era including Sega add-ons and Neo Geo; later systems are import-only profiles. Emulation remains in independently pinned third-party cores. Main UI embeds InfiniSelect with Recents/Favorites/Open, hamburger setup, automatic system dispatch and immediate View/Share launch. Shared .iflink collections live under internal storage/infini/play; native working copies and saves stay private. Declares no broad storage permissions: listings and shared collection writes go through the InfiniSelect/Folder relay; absent Folder, local app-private link collections and normal Android file selection remain available.",
       "released_version": null,
-      "declared_version": "0.2.0",
+      "declared_version": "0.2.1",
       "declared_version_source": "build.gradle.kts",
       "dependency_source": "dependencies.lock.json",
       "dependencies": [
@@ -363,9 +364,9 @@
       "status": "active",
       "repository": "https://github.com/infiniforge/libinfiniselect",
       "purpose": "Reusable Android file open/save selection and resource-resolution client APIs.",
-      "responsibilities": "Owns the optional InfiniFolder picker integration, Android SAF fallback, grant-aware result parsing, distinction between authoritative resource references and current access URIs, and relative playlist resource resolution. It does not depend on the Infinifolder application. Owns the reusable embedded browser View for local/SAF and optional InfiniFolder sources, persistent list/icon and breadcrumb preferences, and interoperable bounded .iflink serialization and identity deduplication. Caller-defined file action hooks render long-press options in embedded and updated floating single-file selectors; callers perform the selected action.",
+      "responsibilities": "Owns the optional InfiniFolder picker integration, Android SAF fallback, grant-aware result parsing, distinction between authoritative resource references and current access URIs, and relative playlist resource resolution. It does not depend on the Infinifolder application. Owns the reusable embedded browser View for local/SAF and optional InfiniFolder sources, persistent list/icon and breadcrumb preferences, and interoperable bounded .iflink serialization and identity deduplication. Caller-defined file action hooks render long-press options in embedded and updated floating single-file selectors; callers perform the selected action. Adds paged JSON directory listing and verified-caller scoped shortcut collection RPC requests; Folder owns shared-storage access so clients need no broad storage permissions. Optional preferredViewMode selects initial LIST/ICON in embedded and floating browsers. Playlist generation migration to InfiniMedia is deferred.",
       "released_version": null,
-      "declared_version": "0.1.1",
+      "declared_version": "0.1.2",
       "declared_version_source": "build.gradle.kts",
       "dependency_source": "dependencies.lock.json",
       "dependencies": [],
@@ -374,7 +375,9 @@
       ],
       "api_docs": [
         "README.md",
-        "docs/embedded-browser.md"
+        "docs/embedded-browser.md",
+        "docs/relay-storage.md",
+        "docs/TODO.md"
       ],
       "protocols": [
         "android-saf",
