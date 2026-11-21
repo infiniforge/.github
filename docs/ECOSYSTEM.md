@@ -28,15 +28,15 @@ The inventory contains 10 applications (7 with standalone builds and 3 planned p
 
 **State:** active · **Build:** standalone app build · **Versions:** no published release verified; build declares `0.1.2`
 
-**Purpose:** Standalone Android audio, video, and image player. Owns playback UI and lifecycle, queues, playlists, player settings, casting, and media presentation. Reusable decoding and playback APIs belong to shared libraries. Local and SAF workflows remain available without Infinifolder.
+**Purpose:** Standalone Android audio, video, and image player with a reusable GLES effects graph for artwork and static images. Owns playback UI and lifecycle, queues, playlists, player settings, casting, and media presentation, including the app-side libinfinifx surface/texture and metadata adapter. Reusable decoding, playback, and GPU effects belong to shared libraries. Local and SAF workflows remain available without Infinifolder.
 
-**Pinned source dependency closure:** [libinfinicanvas](https://github.com/infiniforge/libinfinicanvas), [libinfinicore](https://github.com/infiniforge/libinfinicore), [libinfiniscribe](https://github.com/infiniforge/libinfiniscribe), [libinfiniselect](https://github.com/infiniforge/libinfiniselect), [libinfinisound](https://github.com/infiniforge/libinfinisound), [libinfinistream](https://github.com/infiniforge/libinfinistream), [libinfiniui](https://github.com/infiniforge/libinfiniui), [libinfinivideo](https://github.com/infiniforge/libinfinivideo)
+**Pinned source dependency closure:** [libinfinicanvas](https://github.com/infiniforge/libinfinicanvas), [libinfinicore](https://github.com/infiniforge/libinfinicore), [libinfinifx](https://github.com/infiniforge/libinfinifx), [libinfiniscribe](https://github.com/infiniforge/libinfiniscribe), [libinfiniselect](https://github.com/infiniforge/libinfiniselect), [libinfinisound](https://github.com/infiniforge/libinfinisound), [libinfinistream](https://github.com/infiniforge/libinfinistream), [libinfiniui](https://github.com/infiniforge/libinfiniui), [libinfinivideo](https://github.com/infiniforge/libinfinivideo)
 
 **Exact dependency pins:** [dependencies.lock.json](https://github.com/infiniforge/infinimedia/blob/main/dependencies.lock.json)
 
 **Optional/runtime integrations:** [infinifolder](https://github.com/infiniforge/infinifolder)
 
-**Public API and architecture documentation:** [architecture.md](https://github.com/infiniforge/infinimedia/blob/main/docs/architecture.md), [storage.md](https://github.com/infiniforge/infinimedia/blob/main/docs/storage.md), [audio-formats.md](https://github.com/infiniforge/infinimedia/blob/main/docs/audio-formats.md), [video-formats.md](https://github.com/infiniforge/infinimedia/blob/main/docs/video-formats.md), [TODO.md](https://github.com/infiniforge/infinimedia/blob/main/docs/TODO.md)
+**Public API and architecture documentation:** [TODO.md](https://github.com/infiniforge/infinimedia/blob/main/docs/TODO.md), [architecture.md](https://github.com/infiniforge/infinimedia/blob/main/docs/architecture.md), [audio-formats.md](https://github.com/infiniforge/infinimedia/blob/main/docs/audio-formats.md), [storage.md](https://github.com/infiniforge/infinimedia/blob/main/docs/storage.md), [video-formats.md](https://github.com/infiniforge/infinimedia/blob/main/docs/video-formats.md), [visualization-prototypes.md](https://github.com/infiniforge/infinimedia/blob/main/docs/visualization-prototypes.md)
 
 #### [infiniscribe](https://github.com/infiniforge/infiniscribe)
 
@@ -184,13 +184,13 @@ The inventory contains 10 applications (7 with standalone builds and 3 planned p
 
 **State:** active · **Build:** standalone library build · **Versions:** no published release verified; build declares `0.1.0`
 
-**Purpose:** Reusable Android GLES image effects, simulations, and texture compositing. Owns a standalone GLES 3.0 graph/effect API, pooled RGBA8 render targets, versioned preset JSON, compositing, and per-node visual effect state. Current built-ins include pass-through, CRT/LCD styling, analytic water refraction, heat ripple, fire generation, and alpha/add blending. Host applications own input/output textures, EGL lifecycle, media clocks, audio analysis, file formats, display layout, and UI. Effects do not share mutable simulation fields. No app dependency, consumer integration, or published artifact is declared.
+**Purpose:** Reusable Android GLES image effects, simulations, and texture compositing. Owns a standalone GLES 3.0 graph/effect API, pooled RGBA8 render targets, versioned preset JSON, compositing, and per-node visual effect state. Built-ins include pass-through, CRT/LCD, album-art rotozoom, kaleidoscope, analytic water refraction, heat ripple, fire generation, and alpha/add blending. Host applications own input/output textures, EGL lifecycle, media clocks, audio analysis, file formats, display layout, and UI. Effects do not share mutable simulation fields. The Infinimedia host adapter is app-owned; the library has no application source dependency or published artifact.
 
 **Pinned source dependency closure:** None declared
 
 **Exact dependency pins:** Use the component's Gradle/package metadata; no ecosystem source lock is declared.
 
-**Optional/runtime integrations:** None recorded
+**Optional/runtime integrations:** [infinimedia](https://github.com/infiniforge/infinimedia)
 
 **Public API and architecture documentation:** [README.md](https://github.com/infiniforge/libinfinifx/blob/main/README.md), [api.md](https://github.com/infiniforge/libinfinifx/blob/main/docs/api.md), [architecture.md](https://github.com/infiniforge/libinfinifx/blob/main/docs/architecture.md), [effects.md](https://github.com/infiniforge/libinfinifx/blob/main/docs/effects.md), [integration.md](https://github.com/infiniforge/libinfinifx/blob/main/docs/integration.md)
 
