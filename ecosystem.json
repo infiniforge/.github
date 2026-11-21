@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "organization": "infiniforge",
-  "audited_on": "2026-11-19",
+  "audited_on": "2026-11-20",
   "manifest_repository": "https://github.com/infiniforge/.github",
   "components": [
     {
@@ -309,6 +309,29 @@
       "integrations": [],
       "api_docs": [
         "README.md"
+      ],
+      "protocols": [],
+      "build_status": "standalone-library"
+    },
+    {
+      "id": "libinfinifx",
+      "kind": "library",
+      "status": "active",
+      "repository": "https://github.com/infiniforge/libinfinifx",
+      "purpose": "Reusable Android GLES image effects, simulations, and texture compositing.",
+      "responsibilities": "Owns a standalone GLES 3.0 graph/effect API, pooled RGBA8 render targets, versioned preset JSON, compositing, and per-node visual effect state. Current built-ins include pass-through, CRT/LCD styling, analytic water refraction, heat ripple, fire generation, and alpha/add blending. Host applications own input/output textures, EGL lifecycle, media clocks, audio analysis, file formats, display layout, and UI. Effects do not share mutable simulation fields. No app dependency, consumer integration, or published artifact is declared.",
+      "released_version": null,
+      "declared_version": "0.1.0",
+      "declared_version_source": "build.gradle.kts",
+      "dependency_source": null,
+      "dependencies": [],
+      "integrations": [],
+      "api_docs": [
+        "README.md",
+        "docs/api.md",
+        "docs/architecture.md",
+        "docs/effects.md",
+        "docs/integration.md"
       ],
       "protocols": [],
       "build_status": "standalone-library"
