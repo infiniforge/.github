@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "organization": "infiniforge",
-  "audited_on": "2026-11-19",
+  "audited_on": "2026-11-20",
   "manifest_repository": "https://github.com/infiniforge/.github",
   "components": [
     {
@@ -51,8 +51,8 @@
       "kind": "application",
       "status": "active",
       "repository": "https://github.com/infiniforge/infinimedia",
-      "purpose": "Standalone Android audio, video, and image player.",
-      "responsibilities": "Owns playback UI and lifecycle, queues, playlists, player settings, casting, and media presentation. Reusable decoding and playback APIs belong to shared libraries. Local and SAF workflows remain available without Infinifolder.",
+      "purpose": "Standalone Android audio, video, and image player with a reusable GLES effects graph for artwork and static images.",
+      "responsibilities": "Owns playback UI and lifecycle, queues, playlists, player settings, casting, and media presentation, including the app-side libinfinifx surface/texture and metadata adapter. Reusable decoding, playback, and GPU effects belong to shared libraries. Local and SAF workflows remain available without Infinifolder.",
       "released_version": null,
       "declared_version": "0.1.2",
       "declared_version_source": "build.gradle.kts",
@@ -60,6 +60,7 @@
       "dependencies": [
         "libinfinicanvas",
         "libinfinicore",
+        "libinfinifx",
         "libinfiniscribe",
         "libinfiniselect",
         "libinfinisound",
@@ -71,11 +72,12 @@
         "infinifolder"
       ],
       "api_docs": [
+        "docs/TODO.md",
         "docs/architecture.md",
-        "docs/storage.md",
         "docs/audio-formats.md",
+        "docs/storage.md",
         "docs/video-formats.md",
-        "docs/TODO.md"
+        "docs/visualization-prototypes.md"
       ],
       "protocols": [
         "android-saf",
@@ -309,6 +311,31 @@
       "integrations": [],
       "api_docs": [
         "README.md"
+      ],
+      "protocols": [],
+      "build_status": "standalone-library"
+    },
+    {
+      "id": "libinfinifx",
+      "kind": "library",
+      "status": "active",
+      "repository": "https://github.com/infiniforge/libinfinifx",
+      "purpose": "Reusable Android GLES image effects, simulations, and texture compositing.",
+      "responsibilities": "Owns a standalone GLES 3.0 graph/effect API, pooled RGBA8 render targets, versioned preset JSON, compositing, and per-node visual effect state. Built-ins include pass-through, CRT/LCD, album-art rotozoom, kaleidoscope, analytic water refraction, heat ripple, fire generation, and alpha/add blending. Host applications own input/output textures, EGL lifecycle, media clocks, audio analysis, file formats, display layout, and UI. Effects do not share mutable simulation fields. The Infinimedia host adapter is app-owned; the library has no application source dependency or published artifact.",
+      "released_version": null,
+      "declared_version": "0.1.0",
+      "declared_version_source": "build.gradle.kts",
+      "dependency_source": null,
+      "dependencies": [],
+      "integrations": [
+        "infinimedia"
+      ],
+      "api_docs": [
+        "README.md",
+        "docs/api.md",
+        "docs/architecture.md",
+        "docs/effects.md",
+        "docs/integration.md"
       ],
       "protocols": [],
       "build_status": "standalone-library"
