@@ -1,6 +1,6 @@
 # InfiniForge
 
-<p align="center"><img src="assets/infiniforge-cycle-q50.webp" alt="Animated InfiniForge rainbow infinity logo" width="450" /></p>
+<img src="https://raw.githubusercontent.com/infiniforge/.github/main/profile/assets/infiniforge-cycle-q50.webp" alt="Animated InfiniForge rainbow infinity logo" width="450" />
 
 **Independent Android apps, connected by reusable libraries and open platform interfaces.**
 
